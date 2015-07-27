@@ -1,0 +1,585 @@
+蜘蛛:
+微软
+
+“msnbot-media/1.1 (+http://search.msn.com/msnbot.htm)”
+msnbot，大多数已经被bingbot替代了，现在偶尔还可以看到。
+
+“Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)”
+bing，必应
+搜搜
+
+“Sosospider+(+http://help.soso.com/webspider.htm)”
+腾讯搜搜
+
+“Sosoimagespider+(+http://help.soso.com/soso-image-spider.htm)”
+搜搜图片
+雅虎
+
+“Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)”
+雅虎英文
+
+“Yahoo! Slurp China”
+“Mozilla/5.0 (compatible; Yahoo! Slurp China; http://misc.yahoo.com.cn/help.html)”
+雅虎中国
+搜狗
+
+“http://pic.sogou.com” “Sogou Pic Spider/3.0(+http://www.sogou.com/docs/help/webmasters.htm#07)”
+搜狗图片
+
+“Sogou web spider/4.0(+http://www.sogou.com/docs/help/webmasters.htm#07)”
+搜狗，搜狗的蜘蛛程序做的很不好，总是进入死循环，已经分别在 robots.txt 和 设置中屏蔽掉
+
+Google
+
+“Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)”
+Google
+
+“Googlebot-Image/1.0″
+Google图片搜索
+
+“Mediapartners-Google”
+未知
+
+“FeedBurner/1.0 (http://www.FeedBurner.com)”
+feedburner
+
+“AdsBot-Google-Mobile (+http://www.google.com/mobile/adsbot.html) Mozilla (iPhone; U; CPU iPhone OS 3 0 like Mac OS X) AppleWebKit (KHTML, like Gecko) Mobile Safari”
+Adwords移动网络
+百度
+
+“Baiduspider-image+(+http://www.baidu.com/search/spider.htm)”
+百度图片
+
+“Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)”
+亲爱的百度蜘蛛
+
+“Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN; rv:1.9.2.8;baidu Transcoder) Gecko/20100722 Firefox/3.6.8 ( .NET CLR 3.5.30729)”
+baidu+Transcoder 是用户用手机浏览网站留下的记录，Transcoder 是代码转换器，把网站转码成手机用户上网看到的网页留下的记录
+360
+
+Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0); 360Spider
+360搜索
+其他搜索引擎
+
+“Mozilla/5.0 (compatible; YoudaoBot/1.0; http://www.youdao.com/help/webmaster/spider/; )”
+网易有道
+
+“Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) Speedy Spider (http://www.entireweb.com/about/search_tech/speedy_spider/)”
+来自瑞典的搜索引擎，网站看起来很不错，http://www.entireweb.com
+
+“jikespider \”Mozilla/5.0″
+即刻搜索，原人民搜索，搜索引擎国家队，已倒闭
+
+“Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)”
+俄罗斯yandex
+
+Mozilla/5.0 (compatible; EasouSpider; +http://www.easou.com/search/spider.html)
+宜搜，不认识，一直不停抓取，已屏蔽
+其他已知bot
+
+“HuaweiSymantecSpider/1.0+DSE-support@huaweisymantec.com+(compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR ; http://www.huaweisymantec.com/cn/IRL/spider)”
+华为赛门铁克蜘蛛，是华为赛门铁克科技有限公司网页信誉分析系统的一个页面爬取程序，其作用是用于爬取互联网网页并进行信誉分析，从而检查该网站上的是否含有恶意代码。
+http://baike.baidu.com/view/5994606.htm
+
+qiniu-imgstg-spider-1.0
+七牛镜像蜘蛛
+
+“xFruits/1.0 (http://www.xfruits.com)”
+xFruits，聚合rss用的
+
+Feedly/1.0 (+http://www.feedly.com/fetcher.html; like FeedFetcher-Google)
+Feedly，Google Reader 关闭后一直用这个
+
+Mozilla/5.0 (compatible;YoudaoFeedFetcher/1.0;http://www.youdao.com/help/reader/faq/topic006/;1 subscribers;)
+有道阅读
+
+FeedDemon/4.5 (http://www.feeddemon.com/; Microsoft Windows)
+一款离线RSS阅读器
+
+“Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; JianKongBao Monitor 1.1)”
+监控宝
+
+DNSPod-Monitor/2.0
+DNSPod监控
+
+“Mozilla 5.0 (compatible; Feedsky crawler /1.0; http://www.feedsky.com)”
+Feedsky
+
+“Xianguo.com 1 Subscribers”
+鲜果
+
+360spider(http://webscan.360.cn)
+360网站安全检测
+
+“yrspider Mozilla/5.0 (compatible; YRSpider; +http://www.yunrang.com/yrspider.html)”
+云壤公司，http://www.yunrang.com/yrspider.html
+其他未知bot
+
+“Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; EmbeddedWB 14.52 from: http://www.bsalsa.com/ EmbeddedWB 14.52; .NET CLR 2.0.50727)”
+怀疑为发布SPAM用的，因为总是在获取注册页面和验证码
+
+Mozilla/5.0 (compatible; LinkpadBot/1.06; +http://www.linkpad.ru)
+LinkpadBot，看域名知道是来自俄罗斯的
+
+Mozilla/5.0 (compatible; SISTRIX Crawler; http://crawler.sistrix.net/)
+又一个国外的
+
+“Mozilla/5.0 (compatible; MJ12bot/v1.4.0; http://www.majestic12.co.uk/bot.php?+)”
+来自英国的未知bot
+
+“Mozilla/5.0 (compatible; Ezooms/1.0; ezooms.bot@gmail.com)”
+未知
+
+“IS Alpha/Nutch-1.1″
+未知
+
+Nutch Spider/Nutch-2.2.1
+貌似是上面那个进化来的
+
+“BlogPulseLive (support@blogpulse.com)”
+
+“findlinks/2.0.2 (+http://wortschatz.uni-leipzig.de/findlinks/)”
+来自德国的未知bot
+
+“Mozilla/4.0 (compatible; MSIE 6.0; AugustBot/augstbot@163.com)”
+未知，貌似与网易有关
+
+“InternetSeer.com”
+未知
+
+“Mozilla/5.0 (compatible; DotBot/1.1; http://www.dotnetdotcom.org/, crawler@dotnetdotcom.org)”
+未知，已更新为下面的
+
+Mozilla/5.0 (compatible; DotBot/1.1; http://www.opensiteexplorer.org/dotbot, help@moz.com)
+DotBot，不认识
+
+“http://www.internet-zarabotok.net/” “Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; Win64; AMD64)”
+来自俄罗斯的未知bot
+
+Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.0.19; aggregator:Spinn3r (Spinn3r 3.1); http://spinn3r.com/robot) Gecko/2010040121 Firefox/3.0.19
+Spinn3r，不认识
+
+Mozilla/5.0 (compatible; Exabot/3.0; +http://www.exabot.com/go/robot)
+Exabot，还是不认识
+
+Mozilla/5.0 (compatible; Exabot/3.0 (BiggerBetter); +http://www.exabot.com/go/robot)
+Exabot，不认识
+
+psbot/0.1 (+http://www.picsearch.com/bot.html)
+psbot，不认识
+
+TurnitinBot/3.0 (http://www.turnitin.com/robot/crawlerinfo.html)
+TurnitinBot，不认识
+
+浏览器:
+浏览器User-Agent的详细信息
+
+ 
+
+PC端：
+
+ 
+
+safari 5.1 – MAC
+
+User-Agent:Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50
+
+ 
+
+safari 5.1 – Windows
+
+User-Agent:Mozilla/5.0 (Windows; U; Windows NT 6.1; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50
+
+ 
+
+IE 9.0
+
+User-Agent:Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0;
+
+ 
+
+IE 8.0
+
+User-Agent:Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0)
+
+ 
+
+IE 7.0
+
+User-Agent:Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)
+
+ 
+
+IE 6.0
+
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)
+
+ 
+
+Firefox 4.0.1 – MAC
+
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:2.0.1) Gecko/20100101 Firefox/4.0.1
+
+ 
+
+Firefox 4.0.1 – Windows
+
+User-Agent:Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1
+
+ 
+
+Opera 11.11 – MAC
+
+User-Agent:Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; en) Presto/2.8.131 Version/11.11
+
+ 
+
+Opera 11.11 – Windows
+
+User-Agent:Opera/9.80 (Windows NT 6.1; U; en) Presto/2.8.131 Version/11.11
+
+ 
+
+Chrome 17.0 – MAC
+
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_0) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11
+
+ 
+
+傲游（Maxthon）
+
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Maxthon 2.0)
+
+ 
+
+腾讯TT
+
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; TencentTraveler 4.0)
+
+ 
+
+世界之窗（The World） 2.x
+
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)
+
+ 
+
+世界之窗（The World） 3.x
+
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; The World)
+
+ 
+
+搜狗浏览器 1.x
+
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; SE 2.X MetaSr 1.0; SE 2.X MetaSr 1.0; .NET CLR 2.0.50727; SE 2.X MetaSr 1.0)
+
+ 
+
+360浏览器
+
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; 360SE)
+
+ 
+
+Avant
+
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Avant Browser)
+
+ 
+
+Green Browser
+
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)
+
+ 
+
+移动设备端：
+
+ 
+
+safari iOS 4.33 – iPhone
+
+User-Agent:Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_3_3 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8J2 Safari/6533.18.5
+
+ 
+
+safari iOS 4.33 – iPod Touch
+
+User-Agent:Mozilla/5.0 (iPod; U; CPU iPhone OS 4_3_3 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8J2 Safari/6533.18.5
+
+ 
+
+safari iOS 4.33 – iPad
+
+User-Agent:Mozilla/5.0 (iPad; U; CPU OS 4_3_3 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8J2 Safari/6533.18.5
+
+ 
+
+Android N1
+
+User-Agent: Mozilla/5.0 (Linux; U; Android 2.3.7; en-us; Nexus One Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
+
+ 
+
+Android QQ浏览器 For android
+
+User-Agent: MQQBrowser/26 Mozilla/5.0 (Linux; U; Android 2.3.7; zh-cn; MB200 Build/GRJ22; CyanogenMod-7) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
+
+ 
+
+Android Opera Mobile
+
+User-Agent: Opera/9.80 (Android 2.3.4; Linux; Opera Mobi/build-1107180945; U; en-GB) Presto/2.8.149 Version/11.10
+
+ 
+
+Android Pad Moto Xoom
+
+User-Agent: Mozilla/5.0 (Linux; U; Android 3.0; en-us; Xoom Build/HRI39) AppleWebKit/534.13 (KHTML, like Gecko) Version/4.0 Safari/534.13
+
+ 
+
+BlackBerry
+
+User-Agent: Mozilla/5.0 (BlackBerry; U; BlackBerry 9800; en) AppleWebKit/534.1+ (KHTML, like Gecko) Version/6.0.0.337 Mobile Safari/534.1+
+
+ 
+
+WebOS HP Touchpad
+
+User-Agent: Mozilla/5.0 (hp-tablet; Linux; hpwOS/3.0.0; U; en-US) AppleWebKit/534.6 (KHTML, like Gecko) wOSBrowser/233.70 Safari/534.6 TouchPad/1.0
+
+ 
+
+Nokia N97
+
+User-Agent: Mozilla/5.0 (SymbianOS/9.4; Series60/5.0 NokiaN97-1/20.0.019; Profile/MIDP-2.1 Configuration/CLDC-1.1) AppleWebKit/525 (KHTML, like Gecko) BrowserNG/7.1.18124
+
+ 
+
+Windows Phone Mango
+
+User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; Titan)
+
+ 
+
+UC无
+
+User-Agent: UCWEB7.0.2.37/28/999
+
+ 
+
+UC标准
+
+User-Agent: NOKIA5700/ UCWEB7.0.2.37/28/999
+
+ 
+
+UCOpenwave
+
+User-Agent: Openwave/ UCWEB7.0.2.37/28/999
+
+ 
+
+UC Opera
+
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; ) Opera/UCWEB7.0.2.37/28/999
+
+ 
+
+二、浏览器识别
+
+ 
+
+1、IE浏览器（以IE 9.0 为例）
+
+ 
+
+PC端：User-Agent:Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0;
+
+移动设备：User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; Titan)
+
+ 
+
+由于遨游、世界之窗、360浏览器、腾讯浏览器以及搜狗浏览器、Avant、Green Browser均采用IE的内核，因此IE浏览器判断的标准是”MSIE“字段，MSIE字段后面的数字为版本号，但同时还需要判断不包 含”Maxthon“、”The world“、”360SE“、”TencentTraveler“、”SE“、”Avant“等字段（Green Browser没有明显标识）。移动设备还需要判断IEMobile+版本号。
+
+ 
+
+2、360浏览器
+
+ 
+
+PC端：User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; InfoPath.2; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; 360SE)
+
+移动设备：暂无
+
+ 
+
+360浏览器的判断标准是”360SE”字段，没有版本表示。
+
+ 
+
+3、搜狗浏览器
+
+ 
+
+PC端：User-Agent:Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; SE 2.X MetaSr 1.0; SE 2.X MetaSr 1.0; .NET CLR 2.0.50727; SE 2.X MetaSr 1.0)
+
+移动设备：暂无
+
+ 
+
+搜狗浏览器的判断标准是”SE“、”MetaSr“字段，版本号为SE后面的数字。
+
+ 
+
+4、Chrome
+
+ 
+
+PC端：Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_0) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11
+
+ 
+
+移动设备：User-Agent: Mozilla/5.0 (Linux; U; Android 2.2.1; zh-cn; HTC_Wildfire_A3333 Build/FRG83D) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
+
+ 
+
+PC端chrome浏览器的判断标准是chrome字段，chrome后面的数字为版本号；移动端的chrome浏览器判断”android“、”linux“、”mobile safari“等字段，version后面的数字为版本号。
+
+ 
+
+5、Safari
+
+ 
+
+PC端：User-Agent:Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50
+
+ 
+
+移动设备：User-Agent:Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_3_3 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8J2 Safari/6533.18.5
+
+ 
+
+由于Chrome及Nokia’s Series 60 browser也使用WebKit内核，因此Safari浏览器的判断必须是：包含safari字段，同时不包含chrome等信息，确定 后”version/“后面的数字即为版本号。在以上条件下包含Mobile字段的即为移动设备上的Safari浏览器。
+
+ 
+
+6、腾讯浏览器
+
+ 
+
+PC端：User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; TencentTraveler 4.0; .NET CLR 2.0.50727)
+
+ 
+
+移动设备：User-Agent: MQQBrowser/26 Mozilla/5.0 (Linux; U; Android 2.3.7; zh-cn; MB200 Build/GRJ22; CyanogenMod-7) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
+
+ 
+
+腾讯浏览器的判断标准是”TencentTraveler“或者”QQBrowser“，TencentTraveler或QQBrowser后面的数字为版本号。
+
+ 
+
+7、Firefox
+
+ 
+
+PC端：User-Agent:Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1
+
+ 
+
+移动设备：User-Agent: Mozilla/5.0 (Androdi; Linux armv7l; rv:5.0) Gecko/ Firefox/5.0 fennec/5.0
+
+ 
+
+Firefox的判断标准是Firefox字段，firefox后面的数字为版本号。
+
+ 
+
+8、The world
+
+ 
+
+PC端：User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; The World)
+
+ 
+
+移动设备：暂无
+
+ 
+
+Theworld浏览器的判断标准是”The world“字段，没有标示版本号。
+
+ 
+
+需要注意的是：The world 2.x版本的User-Agent中没有”The world“的字段。
+
+ 
+
+9、遨游
+
+ 
+
+PC端：User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Maxthon 2.0)
+
+ 
+
+移动设备：暂无
+
+ 
+
+遨游浏览器的判断标准是”Maxthon“，Maxthon后面的数字为版本号。
+
+ 
+
+10、Opera
+
+ 
+
+PC端：User-Agent:Opera/9.80 (Windows NT 6.1; U; en) Presto/2.8.131 Version/11.11
+
+ 
+
+移动设备：User-Agent: Opera/9.80 (Android 2.3.4; Linux; Opera mobi/adr-1107051709; U; zh-cn) Presto/2.8.149 Version/11.10
+
+ 
+
+opera浏览器的判断标准是opera字段，opera字段后面的数字为版本号。
+
+ 
+
+11、UC浏览器
+
+ 
+
+UC Web有多种模式浏览方式，对应的User-Agent为：
+
+ 
+
+UC无
+
+User-Agent: UCWEB7.0.2.37/28/999
+
+ 
+
+UC标准
+
+User-Agent: NOKIA5700/ UCWEB7.0.2.37/28/999
+
+ 
+
+UCOpenwave
+
+User-Agent: Openwave/ UCWEB7.0.2.37/28/999
+
+ 
+
+UC Opera
+
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; ) Opera/UCWEB7.0.2.37/28/999
+
+ 
+
+UC浏览器的判断标准是”UCWEB“字段，UCWEB后面的数字为版本号。
