@@ -30,7 +30,7 @@ def printstr(s):
 	global g_print_lock
 	g_print_lock.acquire()
 	type = sys.getfilesystemencoding()
-	print s.decode('utf-8').encode(type)
+	print s.decode('utf-8','ignore').encode(type)
 	g_print_lock.release();
 	
 def printerr(e):

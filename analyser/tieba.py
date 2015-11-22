@@ -29,7 +29,6 @@ class analyser(analyser.analyser):
 	
 	def analyse_page(self,page):
 		self.page = page
-		pass
 	
 	def	get_next_page(self):
 		regexp = re.compile("<a href=\"\\S+\">下一页</a>",re.I|re.S)

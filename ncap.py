@@ -26,7 +26,7 @@ analyser = ""
 url = ""
 output = ""
 
-agent = "Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1"
+agent = "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)"
 
 
 def usage():
@@ -48,7 +48,7 @@ def arg_scanner(arg_list):
 			new_arg = s[1:]
 		else:
 			ret[new_arg] = s.decode(type).encode('utf-8')
-	return ret;
+	return ret
 
 out.init_lock()
 	

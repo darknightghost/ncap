@@ -21,6 +21,7 @@ from encode import out
 import urllib2
 import time
 import analyser
+import gc
 
 class spider:
 	"""
@@ -66,7 +67,7 @@ class spider:
 		request.add_header('User-Agent', self.agent)
 		try:
 			out.printstr("\nGetting %s"%(self.url))
-			response = urllib2.urlopen(request)
+			response = urllib2.urlopen(request,timeout=30)
 		except urllib2.URLError,e:
 			out.printerr(e)
 			self.end = True
@@ -86,6 +87,7 @@ class spider:
 		
 		#Analyse
 		while True:
+			gc.collect()
 			while self.buff != None:
 				self.buff_lock.release()
 				time.sleep(0)
@@ -109,17 +111,26 @@ class spider:
 				break
 			
 			#Get pages
-			request = urllib2.Request(url)
-			request.add_header('User-Agent', self.agent)
-			try:
-				out.printstr("\nGetting %s"%(url))
-				response = urllib2.urlopen(request)
-			except urllib2.URLError,e:
-				out.printerr(e)
-				self.end = True
-				return
+			while True:
+				request = urllib2.Request(url)
+				request.add_header('User-Agent', self.agent)
+				try:
+					try:
+						out.printstr("\nGetting %s"%(url))
+						response = urllib2.urlopen(request,timeout=30)
+					except urllib2.URLError,e:
+						out.printerr(e)
+						out.printstr("Download failed retrying...\n")
+						continue
 
-			data = response.read()
+					data = response.read()
+				except Exception:
+					out.printstr("Download failed retrying...\n")
+					continue
+				if len(data) == 0:
+					out.printstr("Download failed retrying...\n")
+					continue
+				break
 			out.printstr("%i bytes downloaded.\nAnalysing..."%(len(data)))
 			try:
 				analy.analyse_page(data)

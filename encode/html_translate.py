@@ -25,11 +25,13 @@ def translate(s):
 	'''Unescape html text.'''
 	html_parser = HTMLParser.HTMLParser()
 	regexp = re.compile("&\W?\w+?;")
-	s = s.strip().lstrip().rstrip(" ")
-	s = s.strip().lstrip().rstrip("\n")
-	s = s.strip().lstrip().rstrip("\t")
+	s = s.replace(" ","")
+	s = s.replace("\n","")
+	s = s.replace("\r","")
+	s = s.replace("\t","")
 	s = s.replace("<br>","\n")
 	s = s.replace("<br/>","\n")
+	s = s.replace("<br />","\n")
 
 	while True:
 		match = regexp.search(s)
@@ -37,9 +39,13 @@ def translate(s):
 			break
 		encoded = s[match.start() : match.end()]
 		decoded = html_parser.unescape(encoded)
-		try:
-			s = s.replace(encoded,decoded)
-		except UnicodeDecodeError:
-			s = s.replace(encoded,decoded.encode('utf-8'))
+		
+		if encoded == decoded:
+			s = s.replace(encoded,"")
+		else:
+			try:
+				s = s.replace(encoded,decoded)
+			except UnicodeDecodeError:
+				s = s.replace(encoded,decoded.encode('utf-8'))
 
 	return s
