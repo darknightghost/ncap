@@ -67,7 +67,7 @@ class spider:
 		request.add_header('User-Agent', self.agent)
 		try:
 			out.printstr("\nGetting %s"%(self.url))
-			response = urllib2.urlopen(request,timeout=30)
+			response = urllib2.urlopen(request,timeout=5)
 		except urllib2.URLError,e:
 			out.printerr(e)
 			self.end = True
@@ -117,7 +117,7 @@ class spider:
 				try:
 					try:
 						out.printstr("\nGetting %s"%(url))
-						response = urllib2.urlopen(request,timeout=30)
+						response = urllib2.urlopen(request,timeout=5)
 					except urllib2.URLError,e:
 						out.printerr(e)
 						out.printstr("Download failed retrying...\n")
