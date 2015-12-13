@@ -49,7 +49,7 @@ class analyser(analyser.analyser):
 			return ret
 		else:
 			#Analyse chapter
-			ret = self.analyse_chapter()
+			ret = self.analyse_chapter(index)
 			return ret
 		
 	def analyse_index(self):
@@ -81,7 +81,7 @@ class analyser(analyser.analyser):
 			ret = ret + "<br/>"
 		
 		return html_translate.translate(ret)
-	def analyse_chapter(self):
+	def analyse_chapter(self,index):
 		ret = ""
 		page = self.page
 		
@@ -91,6 +91,7 @@ class analyser(analyser.analyser):
 		title = page[m.start() + 4 : m.end() - 5]
 		ret = title.decode('gbk','ignore').encode('utf-8')
 		out.printstr("Chapter title : " + ret + "\n")
+		ret = "第%i章 "%(index) + ret
 		ret = ret + "<br/>"
 		ret = ret.replace(" ","&nbsp;")
 		page = page[m.end() :]
