@@ -98,17 +98,17 @@ class spider:
 			#The analyser support multi-thread download
 			#Get args
 			try:
-				timeout = self.args["t"]
+				timeout = int(self.args["t"])
 			except KeyError:
 				timeout = 5
 			try:
-				thread_num = self.args["h"]
+				thread_num = int(self.args["h"])
 			except KeyError:
 				thread_num = 5
 			try:
-				max_buffered = self.args["b"]
+				max_buffered = int(self.args["b"])
 			except KeyError:
-				max_buffered = 5
+				max_buffered = 30
 
 			#Initialize downloader
 			downloader = spider_downloader(thread_num,self.agent,timeout,max_buffered)
@@ -142,7 +142,7 @@ class spider:
 			#The analyser does not support multi-thread download
 			#Get args
 			try:
-				timeout = self.args["t"]
+				timeout = int(self.args["t"])
 			except KeyError:
 				timeout = 5
 

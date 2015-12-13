@@ -34,6 +34,8 @@ class spider_downloader:
 		self.thread_num = thread_num
 		self.agent = agent
 		self.max_buffered = max_buffered
+		if max_buffered <= thread_num:
+			self.max_buffered = thread_num + 1
 		self.timeout = timeout
 		self.active_thread = 0
 		self.last_url = 0
@@ -41,7 +43,7 @@ class spider_downloader:
 		#[[url,data,status]]
 		self.url_list = []
 		self.thread_num_lock = thread.allocate_lock()
-		self.buffered_cond = threading.Condition()
+		self.buffered_sem = threading.Semaphore(self.max_buffered)
 		self.list_cond  = threading.Condition()
 		self.free = 0
 		self.downloading = 1
@@ -81,11 +83,7 @@ class spider_downloader:
 		self.url_list.pop(0)
 		self.last_url = self.last_url - 1
 		self.list_cond.release()
-		
-		self.buffered_cond.acquire()
-		if self.last_url == (self.max_buffered - 1):
-			self.buffered_cond.notifyAll()
-		self.buffered_cond.release()
+		self.buffered_sem.release()
 		gc.collect()
 
 	def redownload(self):
@@ -94,11 +92,9 @@ class spider_downloader:
 		'''
 		self.list_cond.acquire()
 		self.url_list[0][1] = None
+		self.url_list[0][2] = self.free
 		self.last_url = 0
 		self.list_cond.release()
-		self.buffered_cond.acquire()
-		self.buffered_cond.notifyAll()
-		self.buffered_cond.release()
 
 	def download(self):
 		'''
@@ -112,33 +108,39 @@ class spider_downloader:
 				break
 
 			#Download url
-			request = urllib2.Request(url[0])
-			request.add_header('User-Agent', self.agent)
-			try:
+			while True:
+				request = urllib2.Request(url[0])
+				request.add_header('User-Agent', self.agent)
 				try:
-					out.printstr("\nGetting %s"%(url[0]))
-					response = urllib2.urlopen(request,timeout = self.timeout)
-				except urllib2.URLError,e:
-					out.printerr(e)
+					try:
+						out.printstr("\nGetting %s"%(url[0]))
+						response = urllib2.urlopen(request,timeout = self.timeout)
+					except urllib2.URLError,e:
+						out.printerr(e)
+						out.printstr("Download failed retrying...\n")
+						continue
+					data = response.read()
+					if len(data) == 0:
+						out.printstr("Download failed retrying...\n")
+						continue
+				except Exception:
 					out.printstr("Download failed retrying...\n")
 					continue
-				data = response.read()
-				if len(data) == 0:
-					out.printstr("Download failed retrying...\n")
-					continue
-			except Exception:
-				out.printstr("Download failed retrying...\n")
-				continue
+				break
 			out.printstr("%i bytes downloaded.\n"%(len(data)))
 
 			#Add downloaded data
-			self.list_cond.acquire()
+			
 			url[1] = data
 			url[2] = self.free
+
+			self.list_cond.acquire()
 			self.list_cond.notifyAll()
 			self.list_cond.release()
 		self.thread_num_lock.acquire()
 		self.active_thread = self.active_thread - 1
+		if self.thread_num > 1:
+			self.thread_num = self.thread_num - 1
 		self.thread_num_lock.release()
 		out.printstr("Download thread exited.\n")
 		return
@@ -154,14 +156,11 @@ class spider_downloader:
 			if self.url_list[i][1] == None and self.url_list[i][2] == self.free:
 				self.url_list[i][2] = self.downloading
 				self.last_url = i + 1
+				ret = self.url_list[i]
 				self.list_cond.release()
-				
 				if i != 0:
-					self.buffered_cond.acquire()
-					if self.last_url > self.max_buffered:
-						self.buffered_cond.wait()
-					self.buffered_cond.release()
-				return self.url_list[i]
+					self.buffered_sem.acquire()
+				return ret
 			i = i + 1
 		self.list_cond.release()
 		return None
