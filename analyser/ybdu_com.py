@@ -88,6 +88,8 @@ class analyser(analyser.analyser):
 		#Get title
 		title_exp = re.compile("<h1>.+?</h1>",re.I|re.S)
 		m = title_exp.search(page)
+		if m == None:
+			return None
 		title = page[m.start() + 4 : m.end() - 5]
 		ret = title.decode('gbk','ignore').encode('utf-8')
 		out.printstr("Chapter title : " + ret + "\n")

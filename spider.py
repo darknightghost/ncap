@@ -69,10 +69,13 @@ class spider:
 		try:
 			out.printstr("\nGetting %s"%(self.url))
 			response = urllib2.urlopen(request,timeout=5)
-		except urllib2.URLError,e:
+		except Exception,e:
 			out.printerr(e)
 			self.end = True
-			return
+			self.buff_lock.acquire()
+			self.buff_lock.notifyAll()
+			self.buff_lock.release()
+			exit(-1)
 		
 		#Initialize analyser
 		data = response.read()
@@ -82,7 +85,10 @@ class spider:
 		except Exception,e:
 			out.printerr(e)
 			self.end = True
-			return
+			self.buff_lock.acquire()
+			self.buff_lock.notifyAll()
+			self.buff_lock.release()
+			exit(-1)
 		try:
 			data = analy.get_data(0)
 		except Exception,e:
@@ -91,7 +97,7 @@ class spider:
 			self.buff_lock.acquire()
 			self.buff_lock.notifyAll()
 			self.buff_lock.release()
-			return
+			exit(-1)
 		self.write_buf(data)
 		#Analyse
 		if analy.allow_multi_thread():
