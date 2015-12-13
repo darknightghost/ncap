@@ -23,7 +23,13 @@ class analyser:
 		  Initialize the analyser.
 		'''
 		pass
-	
+
+	def allow_multi_thread(self):
+		'''
+		  Return if the analyser allow multithread-download.
+		'''
+		return False
+
 	def analyse_page(self,page):
 		'''
 		  Transfer the page which the analyser should analyse.
@@ -36,7 +42,7 @@ class analyser:
 		'''
 		return None
 		
-	def	get_data(self):
+	def	get_data(self,index):
 		'''
 		  Get data from the page.
 		'''

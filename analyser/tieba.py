@@ -41,7 +41,7 @@ class analyser(analyser.analyser):
 		ret = ret[a.start() + 1 : a.end() - 1]
 		return "http://tieba.baidu.com" + ret;
 		
-	def	get_data(self):
+	def	get_data(self,index):
 		ret = ""
 		next = self.page
 		cc = re.compile("<cc>",re.I|re.S)

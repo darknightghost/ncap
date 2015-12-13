@@ -31,7 +31,7 @@ agent = "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)
 
 def usage():
 	out.printstr("Usage:")
-	out.printstr("\tncap.py -u url -a analyser -o output [-g agent] [analyser_parameters]")
+	out.printstr("\tncap.py -u url -a analyser -o output [-t timeout] [-h thread-num] [-g agent] [analyser_parameters]")
 
 
 def arg_scanner(arg_list):

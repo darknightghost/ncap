@@ -29,7 +29,10 @@ class analyser(analyser.analyser):
 		self.base = args["u"]
 		self.current_chapter = 0
 		self.chapters = []
-	
+
+	def allow_multi_thread(self):
+		return True
+
 	def analyse_page(self,page):
 		self.page = page
 	
@@ -39,7 +42,7 @@ class analyser(analyser.analyser):
 			return None
 		return self.base + self.chapters[self.current_chapter - 1];
 		
-	def	get_data(self):
+	def	get_data(self,index):
 		if self.current_chapter == 0:
 			#Analyse index
 			ret = self.analyse_index()

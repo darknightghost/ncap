@@ -22,6 +22,8 @@ import urllib2
 import time
 import analyser
 import gc
+import threading
+from spider_downloader import *
 
 class spider:
 	"""
@@ -50,12 +52,13 @@ class spider:
 		self.buff = None
 		self.end = False;
 		self.agent = agent
-		self.buff_lock = thread.allocate_lock()
+		self.buff_lock = threading.threading.Condition()
 		self.work_thread = thread.start_new_thread(self.analyse,())
 		time.sleep(0)
 		
 	def analyse(self):
 		'''
+		Private function
 		  Thread function.It will be called in __init__().Don't call it manually.
 		'''
 		exec "from analyser.%s import *"%(self.analyser)
@@ -84,66 +87,103 @@ class spider:
 			self.end = True
 			self.buff_lock.release()
 			return
-		
-		#Analyse
-		while True:
-			gc.collect()
-			while self.buff != None:
-				self.buff_lock.release()
-				time.sleep(0)
-				self.buff_lock.acquire()
-			try:
-				self.buff = analy.get_data()
-			except Exception,e:
-				out.printerr(e)
-				self.end = True
-				self.buff_lock.release()
-				return
-			self.buff_lock.release()
-			try:
-				url = analy.get_next_page()
-			except Exception,e:
-				out.printerr(e)
-				self.end = True
-				return
-							
-			if url == None:
-				break
-			
-			#Get pages
-			while True:
-				request = urllib2.Request(url)
-				request.add_header('User-Agent', self.agent)
-				try:
-					try:
-						out.printstr("\nGetting %s"%(url))
-						response = urllib2.urlopen(request,timeout=5)
-					except urllib2.URLError,e:
-						out.printerr(e)
-						out.printstr("Download failed retrying...\n")
-						continue
-
-					data = response.read()
-				except Exception:
-					out.printstr("Download failed retrying...\n")
-					continue
-				if len(data) == 0:
-					out.printstr("Download failed retrying...\n")
-					continue
-				break
-			out.printstr("%i bytes downloaded.\nAnalysing..."%(len(data)))
-			try:
-				analy.analyse_page(data)
-			except Exception,e:
-				out.printerr(e)
-				self.end = True
-				return
-			
+		try:
+			data = analy.get_data()
+		except Exception,e:
+			out.printerr(e)
+			self.end = True
 			self.buff_lock.acquire()
-			
+			self.buff_lock.notifyAll()
+			self.buff_lock.release()
+			return
+		self.write_buf(data)
+		#Analyse
+		if analy.allow_multi_thread():
+			#The analyser support multi-thread download
+			#Get args
+			try:
+				timeout = self.args["t"]
+			except KeyError:
+				timeout = 5
+			try:
+				thread_num = self.args["h"]
+			except KeyError:
+				thread_num = 5
+
+			#Initialize downloader
+			downloader = spider_downloader(thread_num,self.agent,timeout)
+
+			#Add urls
+			while True:
+				url = analy.get_next_page()
+				if url == None:
+					break
+				else:
+					downloader.add_url(url)
+
+			#Analyse pages
+			i = 0
+			while True:
+				gc.collect()
+				page = downloader.get_data()
+				if page == None:
+					break
+				i = i + 1
+				analy.analyse_page(page)
+				data = analy.get_data(i)
+				if data == None:
+					i = i - 1
+					downloader.redownload()
+					out.printstr("Analyzation failed redownload the page.\n")
+				else:
+					downloader.pop()
+					self.write_buf(data)
+		else:
+			#The analyser does not support multi-thread download
+			#Get args
+			try:
+				timeout = self.args["t"]
+			except KeyError:
+				timeout = 5
+
+			#Initialize downloader
+			downloader = spider_downloader(1,self.agent,timeout)
+
+			#Analyse pages
+			i = 0
+			while True:
+				gc.collect()
+				url = analy.get_next_page()
+				if url == None:
+					break
+				else:
+					downloader.add_url(url)
+				page = downloader.get_data()
+				if page == None:
+					break
+				i = i + 1
+				analy.analyse_page(page)
+				data = analy.get_data(i)
+				if data == None:
+					i = i - 1
+					downloader.redownload()
+					out.printstr("Analyzation failed redownload the page.\n")
+				else:
+					downloader.pop()
+					self.write_buf(data)
+
 		self.end = True;
 		return
-		
+
+	def write_buf(self,data):
+		self.buff_lock.acquire()
+		if self.buff != None:
+			self.buff = self.buff + data
+		else:
+			self.buff = data
+		self.buff_lock.notifyAll()
+		self.buff_lock.release()
+
 	def get_data(self):
 		'''
 		  Get analysed data.If there's no more data to get, it returns
@@ -152,8 +192,7 @@ class spider:
 		while self.end == False:
 			self.buff_lock.acquire()
 			if self.buff == None:
-				self.buff_lock.release()
-				time.sleep(0)
+				self.buff_lock.wait()
 				continue
 			else:
 				ret = self.buff
