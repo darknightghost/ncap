@@ -27,12 +27,13 @@ class spider_downloader:
 	"""
 		  This class is used to download web pages from the internet.
 	"""
-	def __init__(self,thread_num,agent,timeout):
+	def __init__(self,thread_num,agent,timeout,max_buffered):
 		'''
 		  Initialize the downloader.
 		'''
 		self.thread_num = thread_num
 		self.agent = agent
+		self.max_buffered = max_buffered
 		self.timeout = timeout
 		self.active_thread = 0
 		self.last_url = 0
@@ -40,6 +41,7 @@ class spider_downloader:
 		#[[url,data,status]]
 		self.url_list = []
 		self.thread_num_lock = thread.allocate_lock()
+		self.buffered_cond = threading.Condition()
 		self.list_cond  = threading.Condition()
 		self.free = 0
 		self.downloading = 1
@@ -51,7 +53,6 @@ class spider_downloader:
 		self.list_cond.acquire()
 		self.url_list.append([url,None,self.free])
 		self.list_cond.release()
-		pass
 
 	def get_data(self):
 		'''
@@ -80,6 +81,11 @@ class spider_downloader:
 		self.url_list.pop(0)
 		self.last_url = self.last_url - 1
 		self.list_cond.release()
+		
+		self.buffered_cond.acquire()
+		if self.last_url == (self.max_buffered - 1):
+			self.buffered_cond.notifyAll()
+		self.buffered_cond.release()
 		gc.collect()
 
 	def redownload(self):
@@ -90,6 +96,9 @@ class spider_downloader:
 		self.url_list[0][1] = None
 		self.last_url = 0
 		self.list_cond.release()
+		self.buffered_cond.acquire()
+		self.buffered_cond.notifyAll()
+		self.buffered_cond.release()
 
 	def download(self):
 		'''
@@ -146,6 +155,12 @@ class spider_downloader:
 				self.url_list[i][2] = self.downloading
 				self.last_url = i + 1
 				self.list_cond.release()
+				
+				if i != 0:
+					self.buffered_cond.acquire()
+					if self.last_url > self.max_buffered:
+						self.buffered_cond.wait()
+					self.buffered_cond.release()
 				return self.url_list[i]
 			i = i + 1
 		self.list_cond.release()

@@ -52,7 +52,7 @@ class spider:
 		self.buff = None
 		self.end = False;
 		self.agent = agent
-		self.buff_lock = threading.threading.Condition()
+		self.buff_lock = threading.Condition()
 		self.work_thread = thread.start_new_thread(self.analyse,())
 		time.sleep(0)
 		
@@ -62,9 +62,7 @@ class spider:
 		  Thread function.It will be called in __init__().Don't call it manually.
 		'''
 		exec "from analyser.%s import *"%(self.analyser)
-		
-		self.buff_lock.acquire()
-		
+
 		#Get first page
 		request = urllib2.Request(self.url)
 		request.add_header('User-Agent', self.agent)
@@ -74,7 +72,6 @@ class spider:
 		except urllib2.URLError,e:
 			out.printerr(e)
 			self.end = True
-			self.buff_lock.release()
 			return
 		
 		#Initialize analyser
@@ -85,10 +82,9 @@ class spider:
 		except Exception,e:
 			out.printerr(e)
 			self.end = True
-			self.buff_lock.release()
 			return
 		try:
-			data = analy.get_data()
+			data = analy.get_data(0)
 		except Exception,e:
 			out.printerr(e)
 			self.end = True
@@ -109,9 +105,13 @@ class spider:
 				thread_num = self.args["h"]
 			except KeyError:
 				thread_num = 5
+			try:
+				max_buffered = self.args["b"]
+			except KeyError:
+				max_buffered = 5
 
 			#Initialize downloader
-			downloader = spider_downloader(thread_num,self.agent,timeout)
+			downloader = spider_downloader(thread_num,self.agent,timeout,max_buffered)
 
 			#Add urls
 			while True:
@@ -147,7 +147,7 @@ class spider:
 				timeout = 5
 
 			#Initialize downloader
-			downloader = spider_downloader(1,self.agent,timeout)
+			downloader = spider_downloader(1,self.agent,timeout,1)
 
 			#Analyse pages
 			i = 0
