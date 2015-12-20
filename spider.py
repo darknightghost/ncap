@@ -205,4 +205,8 @@ class spider:
 				self.buff = None
 				self.buff_lock.release()
 				return ret
+		if self.buff != None:
+			ret = self.buff
+			self.buff = None
+			return ret
 		return None
