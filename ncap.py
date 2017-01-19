@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 #	Copyright 2015,暗夜幽灵 <darknightghost.cn@gmail.com>
