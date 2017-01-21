@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-#	Copyright 2015,暗夜幽灵 <darknightghost.cn@gmail.com>
+#	Copyright 2017,暗夜幽灵 <darknightghost.cn@gmail.com>
 
 #	his program is free software: you can redistribute it and/or modify
 #	it under the terms of the GNU General Public License as published by
@@ -19,79 +19,91 @@
 
 import sys
 import os
-from spider import *
-from encode import out
+import Spider
+import Analyser
 
-analyser = ""
-url = ""
-output = ""
+default_agent = "Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1"
+default_thread_num = 5
+default_timeout = 10
 
-agent = "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)"
+def main(argv):
+    #Scan args
+    global default_agent
+    global default_thread_num
+    global default_timeout
+    
+    #Get args	
+    args = arg_scanner(argv)
+
+    try:
+        tmp = args["a"]
+        tmp = args["u"]
+        tmp = args["o"]
+    except KeyError:
+        usage()
+        return -1
+        
+    try:
+        tmp = args["g"]
+    except KeyError:
+        args["g"] = default_agent
+        
+    try:
+        tmp = args["h"]
+    except KeyError:
+        args["h"] = default_thread_num
+        
+    try:
+        tmp = args["t"]
+    except KeyError:
+        args["t"] = default_timeout
+    
+    #Get analyser
+    analyser = Analyser.get_analyser(args["a"], args)
+    
+    #Call spider
+    spider = Spider.Spider(args, analyser)
+    spider.run()
+    print("Finished")
+    return 0
 
 
 def usage():
-	out.printstr("Usage:")
-	out.printstr("\tncap.py -u url -a analyser -o output [-t timeout] [-h thread-num] [-b max-buffered-pages] [-g agent] [analyser_parameters]")
+    #Spider options
+    print("Usage:")
+    print("\tncap.py -u url -a analyser -o output [options] [analyser-options]\n"
+        "Options :\n"
+        "\t-t timeout           Connection timeout\n"
+        "\t-h thread-num        Maxium thread num\n"
+        "\t-g agent             User agent\n"
+        "\t-http-proxy proxy    HTTP proxy")
+        
+    #Analyser options
+    print("Analyser options :")
+    options_list = Analyser.get_usages()
+    for a in options_list:
+        print("\t%s :"%(a[0]))
+        for o in a[1]:
+            print("\t\t%-21s%s"%(o[0], o[1]))
+            
+    print("")
 
 
 def arg_scanner(arg_list):
-	ret = {}
-	new_arg = "";
-	
-	type = sys.getfilesystemencoding()
-	
-	for s in arg_list:
-		if s == "--help":
-			usage()
-			exit(0)
-		elif s[0] == "-":
-			new_arg = s[1:]
-		else:
-			ret[new_arg] = s.decode(type).encode('utf-8')
-	return ret
+    ret = {}
+    new_arg = "";
 
-out.init_lock()
-	
-#Get args	
-args = arg_scanner(sys.argv)
-
-try:
-	analyser = args["a"]
-	url = args["u"]
-	output = args["o"]
-except KeyError:
-	usage()
-	exit(-1)
-	
-try:
-	agent = args["g"]
-except KeyError:
-	pass
-
-out.printstr("url = %s\nanalyser = %s\noutput = %s"%(url,analyser,output))
-
-type = sys.getfilesystemencoding()
-#Call spider
-try:
-	file = os.open(output.decode('utf-8').encode(type),os.O_CREAT|os.O_RDWR)
-except Exception:
-	out.printstr("Cannot open output file!")
-	exit(-1)
-	
-s = spider(url,analyser,args,agent)
-
-len = 0
-
-while True:
-	data = s.get_data()
-	if data == None:
-		break
-	size = os.write(file,data)
-	len = len + size
-	out.printstr("%i bytes of data written."%(size))
-
-out.printstr("\nTotal : %i bytes written."%(len))
-os.close(file);
+    for s in arg_list:
+        if s == "--help":
+            usage()
+            exit(0)
+        elif s[0] == "-":
+            new_arg = s[1:]
+        else:
+            ret[new_arg] = s
+    return ret
 
 
+ret = main(sys.argv)
+exit(ret)
 

@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-#   Copyright 2015,暗夜幽灵 <darknightghost.cn@gmail.com>
+#   Copyright 2017,暗夜幽灵 <darknightghost.cn@gmail.com>
 
 #   his program is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -48,14 +48,34 @@ def html_translate(s):
 
     return s
 
-def printstr(s):
+def print_str(s):
+    '''
+        Print string.
+    '''
     global g_print_lock
     g_print_lock.acquire()
     print(s)
     g_print_lock.release()
 	
-def printerr(e):
+def print_err(e):
+    '''
+        Print exception.
+    '''
     global g_print_lock
     g_print_lock.acquire()
     print(str(e))
     g_print_lock.release()
+    
+def save_file(name, data, overwrite):
+    '''
+        Save file.
+    '''
+    if overwrite:
+        f = open(name, "wb")
+        
+    else:
+        f = open(name, "ab")
+        
+    f.write(data)
+    
+    f.close()
