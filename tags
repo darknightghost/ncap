@@ -1,0 +1,85 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Analyser	Analyser/__init__.py	/^class Analyser:$/;"	kind:c	line:121	language:Python	inherits:
+Analyser	Analyser/ehentai.py	/^class Analyser(Analyser.Analyser):$/;"	kind:c	line:25	language:Python	inherits:Analyser.Analyser
+Analyser	Analyser/ehentai.py	/^import Analyser$/;"	kind:i	line:19	language:Python
+Analyser	Analyser/tieba.py	/^class Analyser(Analyser.Analyser):$/;"	kind:c	line:25	language:Python	inherits:Analyser.Analyser
+Analyser	Analyser/tieba.py	/^import Analyser$/;"	kind:i	line:19	language:Python
+Analyser	Spider/__init__.py	/^import Analyser$/;"	kind:i	line:21	language:Python
+Analyser	ncap.py	/^import Analyser$/;"	kind:i	line:23	language:Python
+AnalyserTask	Analyser/__init__.py	/^class AnalyserTask:$/;"	kind:c	line:55	language:Python	inherits:
+AnalyserTask	Analyser/ehentai.py	/^from Analyser import AnalyserTask$/;"	kind:i	line:20	language:Python
+AnalyserTask	Analyser/tieba.py	/^from Analyser import AnalyserTask$/;"	kind:i	line:20	language:Python
+Common	Analyser/__init__.py	/^import Common$/;"	kind:i	line:21	language:Python
+Common	Analyser/ehentai.py	/^import Common$/;"	kind:i	line:21	language:Python
+Common	Analyser/tieba.py	/^import Common$/;"	kind:i	line:21	language:Python
+Common	Spider/__init__.py	/^import Common$/;"	kind:i	line:22	language:Python
+Spider	Spider/__init__.py	/^class Spider:$/;"	kind:c	line:27	language:Python	inherits:
+Spider	ncap.py	/^import Spider$/;"	kind:i	line:22	language:Python
+__do_work	Spider/__init__.py	/^    def __do_work(self):$/;"	kind:m	line:94	language:Python	class:Spider	file:	access:private
+__get_task	Spider/__init__.py	/^    def __get_task(self):$/;"	kind:m	line:139	language:Python	class:Spider	file:	access:private
+__init__	Analyser/__init__.py	/^    def __init__(self, arg_dict):$/;"	kind:m	line:122	language:Python	class:Analyser	access:public
+__init__	Analyser/__init__.py	/^    def __init__(self, url, analyse_callback, additional_info = None):$/;"	kind:m	line:64	language:Python	class:AnalyserTask	access:public
+__init__	Analyser/ehentai.py	/^    def __init__(self, arg_dict):$/;"	kind:m	line:26	language:Python	class:Analyser	access:public
+__init__	Analyser/tieba.py	/^    def __init__(self, arg_dict):$/;"	kind:m	line:26	language:Python	class:Analyser	access:public
+__init__	Spider/__init__.py	/^    def __init__(self, arg_dict, analyser):$/;"	kind:m	line:28	language:Python	class:Spider	access:public
+__picture_callback	Analyser/ehentai.py	/^    def __picture_callback(self, task, url, page):$/;"	kind:m	line:130	language:Python	class:Analyser	file:	access:private
+__picture_page_callback	Analyser/ehentai.py	/^    def __picture_page_callback(self, task, url, page):$/;"	kind:m	line:119	language:Python	class:Analyser	file:	access:private
+__work_thread	Spider/__init__.py	/^    def __work_thread(self):$/;"	kind:m	line:78	language:Python	class:Spider	file:	access:private
+_append_task	Spider/__init__.py	/^    def _append_task(self, tasks):$/;"	kind:m	line:148	language:Python	class:Spider	access:public
+_thread	Analyser/__init__.py	/^import _thread$/;"	kind:i	line:22	language:Python
+_thread	Common/__init__.py	/^import _thread$/;"	kind:i	line:22	language:Python
+_thread	Spider/__init__.py	/^import _thread$/;"	kind:i	line:20	language:Python
+after	Analyser/__init__.py	/^    def after(self):$/;"	kind:m	line:139	language:Python	class:Analyser	access:public
+after	Analyser/tieba.py	/^    def after(self):$/;"	kind:m	line:137	language:Python	class:Analyser	access:public
+analyse	Analyser/__init__.py	/^    def analyse(self, page):$/;"	kind:m	line:92	language:Python	class:AnalyserTask	access:public
+arg_scanner	ncap.py	/^def arg_scanner(arg_list):$/;"	kind:f	line:92	language:Python	access:public
+cookiejar	Spider/__init__.py	/^import http.cookiejar$/;"	kind:i	line:25	language:Python
+cur_order	Analyser/__init__.py	/^    cur_order = 0$/;"	kind:v	line:61	language:Python	class:AnalyserTask
+default_agent	ncap.py	/^default_agent = "Mozilla\/5.0 (Windows NT 6.1; rv:2.0.1) Gecko\/20100101 Firefox\/4.0.1"$/;"	kind:v	line:25	language:Python
+default_thread_num	ncap.py	/^default_thread_num = 5$/;"	kind:v	line:26	language:Python
+default_timeout	ncap.py	/^default_timeout = 10$/;"	kind:v	line:27	language:Python
+finish	Analyser/__init__.py	/^    def finish(self, filename, data, overwrite = True):$/;"	kind:m	line:100	language:Python	class:AnalyserTask	access:public
+first_analyse_callback	Analyser/__init__.py	/^    def first_analyse_callback(self, task, url, page):$/;"	kind:m	line:130	language:Python	class:Analyser	access:public
+first_analyse_callback	Analyser/ehentai.py	/^    def first_analyse_callback(self, task, url, page):$/;"	kind:m	line:43	language:Python	class:Analyser	access:public
+first_analyse_callback	Analyser/tieba.py	/^    def first_analyse_callback(self, task, url, page):$/;"	kind:m	line:44	language:Python	class:Analyser	access:public
+g_print_lock	Common/__init__.py	/^g_print_lock = _thread.allocate_lock()$/;"	kind:v	line:24	language:Python
+get_additional_info	Analyser/__init__.py	/^    def get_additional_info(self):$/;"	kind:m	line:84	language:Python	class:AnalyserTask	access:public
+get_analyser	Analyser/__init__.py	/^def get_analyser(name, arg_dict):$/;"	kind:f	line:25	language:Python	access:public
+get_url	Analyser/__init__.py	/^    def get_url(self):$/;"	kind:m	line:76	language:Python	class:AnalyserTask	access:public
+get_usages	Analyser/__init__.py	/^    def get_usages():$/;"	kind:m	line:147	language:Python	class:Analyser	access:public
+get_usages	Analyser/__init__.py	/^def get_usages():$/;"	kind:f	line:35	language:Python	access:public
+get_usages	Analyser/ehentai.py	/^    def get_usages():$/;"	kind:m	line:136	language:Python	class:Analyser	access:public
+get_usages	Analyser/tieba.py	/^    def get_usages():$/;"	kind:m	line:69	language:Python	class:Analyser	access:public
+html	Common/__init__.py	/^import html.parser$/;"	kind:i	line:19	language:Python
+html_translate	Common/__init__.py	/^def html_translate(s):$/;"	kind:f	line:26	language:Python	access:public
+http	Spider/__init__.py	/^import http.cookiejar$/;"	kind:i	line:25	language:Python
+importlib	Analyser/__init__.py	/^import importlib$/;"	kind:i	line:23	language:Python
+main	ncap.py	/^def main(argv):$/;"	kind:f	line:29	language:Python	access:public
+os	Analyser/__init__.py	/^import os$/;"	kind:i	line:19	language:Python
+os	Analyser/ehentai.py	/^import os$/;"	kind:i	line:23	language:Python
+os	Analyser/tieba.py	/^import os$/;"	kind:i	line:23	language:Python
+os	ncap.py	/^import os$/;"	kind:i	line:21	language:Python
+parser	Common/__init__.py	/^import html.parser$/;"	kind:i	line:19	language:Python
+print_err	Common/__init__.py	/^def print_err(e):$/;"	kind:f	line:60	language:Python	access:public
+print_str	Common/__init__.py	/^def print_str(s):$/;"	kind:f	line:51	language:Python	access:public
+re	Analyser/ehentai.py	/^import re$/;"	kind:i	line:22	language:Python
+re	Analyser/tieba.py	/^import re$/;"	kind:i	line:22	language:Python
+re	Common/__init__.py	/^import re$/;"	kind:i	line:20	language:Python
+request	Spider/__init__.py	/^import urllib.request$/;"	kind:i	line:23	language:Python
+ret	ncap.py	/^ret = main(sys.argv)$/;"	kind:v	line:107	language:Python
+run	Spider/__init__.py	/^    def run(self):$/;"	kind:m	line:48	language:Python	class:Spider	access:public
+save_file	Common/__init__.py	/^def save_file(name, data, overwrite):$/;"	kind:f	line:69	language:Python	access:public
+sys	Common/__init__.py	/^import sys$/;"	kind:i	line:21	language:Python
+sys	ncap.py	/^import sys$/;"	kind:i	line:20	language:Python
+time	Analyser/__init__.py	/^import time$/;"	kind:i	line:20	language:Python
+time	Spider/__init__.py	/^import time$/;"	kind:i	line:24	language:Python
+total_order	Analyser/__init__.py	/^    total_order = 0$/;"	kind:v	line:62	language:Python	class:AnalyserTask
+total_order_lck	Analyser/__init__.py	/^    total_order_lck = _thread.allocate_lock()$/;"	kind:v	line:63	language:Python	class:AnalyserTask
+urllib	Spider/__init__.py	/^import urllib$/;"	kind:i	line:19	language:Python
+urllib	Spider/__init__.py	/^import urllib.request$/;"	kind:i	line:23	language:Python
+usage	ncap.py	/^def usage():$/;"	kind:f	line:71	language:Python	access:public

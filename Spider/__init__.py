@@ -105,7 +105,11 @@ class Spider:
                     Common.print_str("Getting url \"%s\"..."%(task.get_url()))
                     request = urllib.request.urlopen(task.get_url(),
                         timeout = self.__timeout);
-                    data = request.readall()
+                    try:
+                        data = request.readall()
+
+                    except AttributeError:
+                        data = request.read()
                                             
                 except KeyboardInterrupt:
                     Common.print_str("Keyboard interrupted.\n")
