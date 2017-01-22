@@ -30,6 +30,8 @@ class Analyser(Analyser.Analyser):
             Create an analyser.
         '''
         self.page = 0
+        self.__download_len = 0
+        self.__download_pics = 0
         self.filename = arg_dict["o"]
         try:
             os.mkdir(self.filename)
@@ -48,6 +50,7 @@ class Analyser(Analyser.Analyser):
             Returns None if falied.
         '''
         
+        self.__download_len += len(page)
         task.finish(None, None, False)
         
         if url[-9 :] != "nw=always" and "p=" not in url:
@@ -117,6 +120,7 @@ class Analyser(Analyser.Analyser):
         return tasks
 
     def __picture_page_callback(self, task, url, page):
+        self.__download_len += len(page)
         task.finish(None, None, False)
         page = page.decode(encoding='utf-8', errors='ignore')
         img_exp = re.compile("<img id=\"img\" src=\"")
@@ -128,6 +132,8 @@ class Analyser(Analyser.Analyser):
         return [AnalyserTask(pic_url, self.__picture_callback)]
         
     def __picture_callback(self, task, url, page):
+        self.__download_len += len(page)
+        self.__download_pics += 1
         pic_name = url.split("/")[-1]
         pic_name = self.filename + os.sep + pic_name
         task.finish(pic_name, page, True)
@@ -140,3 +146,15 @@ class Analyser(Analyser.Analyser):
             Return the usage.
         '''
         return []
+
+    def after(self):
+        '''
+            analyser.after()
+            
+            This method will be called after finishing all tasks.
+        '''
+        Common.print_str("%d byte(s) download.\n%d pictures(s) downloaded."%(
+            self.__download_len,
+            self.__download_pics))
+        
+        return

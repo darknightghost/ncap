@@ -27,14 +27,15 @@ __init__	Analyser/__init__.py	/^    def __init__(self, url, analyse_callback, ad
 __init__	Analyser/ehentai.py	/^    def __init__(self, arg_dict):$/;"	kind:m	line:26	language:Python	class:Analyser	access:public
 __init__	Analyser/tieba.py	/^    def __init__(self, arg_dict):$/;"	kind:m	line:26	language:Python	class:Analyser	access:public
 __init__	Spider/__init__.py	/^    def __init__(self, arg_dict, analyser):$/;"	kind:m	line:28	language:Python	class:Spider	access:public
-__picture_callback	Analyser/ehentai.py	/^    def __picture_callback(self, task, url, page):$/;"	kind:m	line:130	language:Python	class:Analyser	file:	access:private
-__picture_page_callback	Analyser/ehentai.py	/^    def __picture_page_callback(self, task, url, page):$/;"	kind:m	line:119	language:Python	class:Analyser	file:	access:private
+__picture_callback	Analyser/ehentai.py	/^    def __picture_callback(self, task, url, page):$/;"	kind:m	line:134	language:Python	class:Analyser	file:	access:private
+__picture_page_callback	Analyser/ehentai.py	/^    def __picture_page_callback(self, task, url, page):$/;"	kind:m	line:122	language:Python	class:Analyser	file:	access:private
 __work_thread	Spider/__init__.py	/^    def __work_thread(self):$/;"	kind:m	line:78	language:Python	class:Spider	file:	access:private
 _append_task	Spider/__init__.py	/^    def _append_task(self, tasks):$/;"	kind:m	line:148	language:Python	class:Spider	access:public
 _thread	Analyser/__init__.py	/^import _thread$/;"	kind:i	line:22	language:Python
 _thread	Common/__init__.py	/^import _thread$/;"	kind:i	line:22	language:Python
 _thread	Spider/__init__.py	/^import _thread$/;"	kind:i	line:20	language:Python
 after	Analyser/__init__.py	/^    def after(self):$/;"	kind:m	line:139	language:Python	class:Analyser	access:public
+after	Analyser/ehentai.py	/^    def after(self):$/;"	kind:m	line:150	language:Python	class:Analyser	access:public
 after	Analyser/tieba.py	/^    def after(self):$/;"	kind:m	line:137	language:Python	class:Analyser	access:public
 analyse	Analyser/__init__.py	/^    def analyse(self, page):$/;"	kind:m	line:92	language:Python	class:AnalyserTask	access:public
 arg_scanner	ncap.py	/^def arg_scanner(arg_list):$/;"	kind:f	line:92	language:Python	access:public
@@ -45,7 +46,7 @@ default_thread_num	ncap.py	/^default_thread_num = 5$/;"	kind:v	line:26	language:
 default_timeout	ncap.py	/^default_timeout = 10$/;"	kind:v	line:27	language:Python
 finish	Analyser/__init__.py	/^    def finish(self, filename, data, overwrite = True):$/;"	kind:m	line:100	language:Python	class:AnalyserTask	access:public
 first_analyse_callback	Analyser/__init__.py	/^    def first_analyse_callback(self, task, url, page):$/;"	kind:m	line:130	language:Python	class:Analyser	access:public
-first_analyse_callback	Analyser/ehentai.py	/^    def first_analyse_callback(self, task, url, page):$/;"	kind:m	line:43	language:Python	class:Analyser	access:public
+first_analyse_callback	Analyser/ehentai.py	/^    def first_analyse_callback(self, task, url, page):$/;"	kind:m	line:45	language:Python	class:Analyser	access:public
 first_analyse_callback	Analyser/tieba.py	/^    def first_analyse_callback(self, task, url, page):$/;"	kind:m	line:44	language:Python	class:Analyser	access:public
 g_print_lock	Common/__init__.py	/^g_print_lock = _thread.allocate_lock()$/;"	kind:v	line:24	language:Python
 get_additional_info	Analyser/__init__.py	/^    def get_additional_info(self):$/;"	kind:m	line:84	language:Python	class:AnalyserTask	access:public
@@ -53,7 +54,7 @@ get_analyser	Analyser/__init__.py	/^def get_analyser(name, arg_dict):$/;"	kind:f
 get_url	Analyser/__init__.py	/^    def get_url(self):$/;"	kind:m	line:76	language:Python	class:AnalyserTask	access:public
 get_usages	Analyser/__init__.py	/^    def get_usages():$/;"	kind:m	line:147	language:Python	class:Analyser	access:public
 get_usages	Analyser/__init__.py	/^def get_usages():$/;"	kind:f	line:35	language:Python	access:public
-get_usages	Analyser/ehentai.py	/^    def get_usages():$/;"	kind:m	line:136	language:Python	class:Analyser	access:public
+get_usages	Analyser/ehentai.py	/^    def get_usages():$/;"	kind:m	line:142	language:Python	class:Analyser	access:public
 get_usages	Analyser/tieba.py	/^    def get_usages():$/;"	kind:m	line:69	language:Python	class:Analyser	access:public
 html	Common/__init__.py	/^import html.parser$/;"	kind:i	line:19	language:Python
 html_translate	Common/__init__.py	/^def html_translate(s):$/;"	kind:f	line:26	language:Python	access:public
