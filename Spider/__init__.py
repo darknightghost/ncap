@@ -36,6 +36,11 @@ class Spider:
         self.__max_thread_num = int(arg_dict["h"])
         self.__agent = arg_dict["g"]
         self.__timeout = int(arg_dict["t"])
+        try:
+            self.__cookie_file = arg_dict["c"]
+            
+        except KeyError:
+            self.__cookie_file = None
         
         try:
             self.__http_proxy = arg_dict["http-proxy"]
@@ -50,7 +55,13 @@ class Spider:
             self.__analyser.first_analyse_callback))
             
         #Set proxy
-        cj = http.cookiejar.CookieJar()
+        if self.__cookie_file != None:
+            cj = http.cookiejar.MozillaCookieJar()
+            cj.load(self.__cookie_file, ignore_discard = True, ignore_expires = True)
+        
+        else:
+            cj = http.cookiejar.CookieJar()    
+        
         if self.__http_proxy != None:
             proxy_handler = urllib.request.ProxyHandler({'http': self.__http_proxy})
             opener = urllib.request.build_opener(proxy_handler, urllib.request.HTTPCookieProcessor(cj))

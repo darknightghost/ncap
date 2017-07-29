@@ -49,7 +49,6 @@ class Analyser(Analyser.Analyser):
             First analyse callback. Analyse the page and return new tasks.
             Returns None if falied.
         '''
-        
         self.__download_len += len(page)
         task.finish(None, None, False)
         

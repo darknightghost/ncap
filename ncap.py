@@ -76,6 +76,7 @@ def usage():
         "\t-t timeout           Connection timeout\n"
         "\t-h thread-num        Maxium thread num\n"
         "\t-g agent             User agent\n"
+        "\t-c cookie            Cookie file\n"
         "\t-http-proxy proxy    HTTP proxy")
         
     #Analyser options
